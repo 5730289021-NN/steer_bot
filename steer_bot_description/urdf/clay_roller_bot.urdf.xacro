@@ -57,8 +57,8 @@
   <xacro:property name="wheel_mass" value="1" />
 
   <!-- Steering link dimensions -->
-  <xacro:property name="steer_radius" value="0.3183" />
-  <xacro:property name="steer_thickness" value="0.85" />
+  <xacro:property name="steer_radius" value="0.1" />
+  <xacro:property name="steer_thickness" value="0.2" />
   <xacro:property name="steer_mass" value="1" />
 
   <!-- Axle positions -->
@@ -88,15 +88,7 @@
 
   <!-- Front wheel and rear steer joints required for ackermann_steering_controller -->
 
-  <xacro:front_wheel
-    name="front"
-    parent="base"
-    wheel_radius="${wheel_radius}"
-    wheel_thickness="${wheel_thickness}"
-    wheel_mass="${wheel_mass}">
-    <origin xyz="0 0 ${-wheel_radius-steer_offset}" rpy="${-90 * deg_to_rad} 0 0"/>
-  </xacro:front_wheel>
-
+  <!-- Front steer and rear wheel joints required for ackermann_steering_controller -->
   <xacro:rear_steer
     name="rear"
     parent="base"
@@ -109,6 +101,23 @@
     steer_height="${wheel_radius+steer_offset}">
   </xacro:rear_steer>
 
+  <xacro:rear_wheel
+    name="rear"
+    parent="rear_steer"
+    wheel_radius="${wheel_radius}"
+    wheel_thickness="${wheel_thickness}"
+    wheel_mass="${wheel_mass}">
+    <origin xyz="0 0 ${-wheel_radius-steer_offset}" rpy="${-90 * deg_to_rad} 0 0"/>
+  </xacro:rear_wheel>
+
+  <xacro:front_wheel
+    name="front"
+    parent="base"
+    wheel_radius="${wheel_radius}"
+    wheel_thickness="${wheel_thickness}"
+    wheel_mass="${wheel_mass}">
+    <origin xyz="${+base_length/2+axle_offset} 0 0" rpy="${-90 * deg_to_rad} 0 0"/>
+  </xacro:front_wheel>
 
   <!-- Colour -->
   <gazebo reference="base_link">
