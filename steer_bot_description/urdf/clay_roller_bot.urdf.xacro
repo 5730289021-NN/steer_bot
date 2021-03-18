@@ -35,7 +35,10 @@
     <plugin name="gazebo_ros_joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
         <robotNamespace>${robot_namespace}</robotNamespace>
         <jointName>
-            front_wheel_joint
+            rear_wheel_joint
+        </jointName>
+        <jointName>
+            front_wheel_footprint_joint
         </jointName>
         <updateRate>50</updateRate>
         <alwaysOn>true</alwaysOn>
@@ -86,9 +89,16 @@
         x="${base_length}" y="${base_width}" z="${base_height}" />
   </link>
 
-  <!-- Front wheel and rear steer joints required for ackermann_steering_controller -->
+  <!-- Non rotating forward wheel link -->
+  <link name="base_footprint"/>
+  <joint name="front_wheel_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="${+base_length/2+axle_offset} 0 0" rpy="0 0 0"/>
+  </joint>
 
-  <!-- Front steer and rear wheel joints required for ackermann_steering_controller -->
+
+  <!-- Front wheel and rear steer joints required for ackermann_steering_controller -->
   <xacro:rear_steer
     name="rear"
     parent="base"
@@ -101,6 +111,7 @@
     steer_height="${wheel_radius+steer_offset}">
   </xacro:rear_steer>
 
+  <!-- Passive Joint ! required-->
   <xacro:rear_wheel
     name="rear"
     parent="rear_steer"
