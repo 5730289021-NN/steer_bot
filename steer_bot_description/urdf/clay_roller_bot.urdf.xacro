@@ -101,10 +101,10 @@
   </link>
 
   <!-- Non rotating forward wheel link -->
-  <link name="base_footprint"/>
+  <link name="front_footprint"/>
   <joint name="front_wheel_footprint_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="base_footprint"/>
+    <child link="front_footprint"/>
     <origin xyz="${+base_length/2+axle_offset} 0 0" rpy="0 0 0"/>
   </joint>
 

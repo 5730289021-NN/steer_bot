@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/opt/ros/noetic/include/**",
+        "/home/oak/catkin_ws/src/crcc_local_planner/include/**",
+        "/home/oak/catkin_ws/src/crcc_planner/include/**",
+        "/home/oak/catkin_ws/src/rear_ackermann_steering_controller/include/**",
+        "/home/oak/catkin_ws/src/steer_drive_ros/steer_bot_hardware_gazebo/include/**",
+        "/home/oak/catkin_ws/src/steer_drive_ros/steer_drive_controller/include/**",
+        "/home/oak/catkin_ws/src/steer_drive_ros/stepback_and_steerturn_recovery/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
