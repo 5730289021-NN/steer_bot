@@ -4,5 +4,7 @@ rosrun message_to_tf message_to_tf /clay_roller_bot/ground_truth/state
 
 roslaunch turtlebot3_navigation turtlebot3_navigation.launch
 
+rviz
+
 //Check tf_tree with
 rosrun rqt_tf_tree rqt_tf_tree
